@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WebRTC Yayın - Ana Sayfa</title>
+    <style>
+      body { font-family: sans-serif; padding: 24px; }
+      input { padding: 8px; margin-right: 8px; }
+      a, button { padding: 8px 12px; margin-right: 8px; display: inline-block; }
+      .row { margin: 12px 0; }
+      code { background: #f3f3f3; padding: 2px 4px; }
+    </style>
+  </head>
+  <body>
+    <h1>WebRTC Canlı Yayın</h1>
+    <p>
+      Bu sayfadan izleyici ve izin (yayın başlatma) sayfalarına gidebilirsiniz.
+      Oda adını aynı girerek kullanıcı yayın açtığında buradan canlı izleyin.
+    </p>
+
+    <div class="row">
+      <label>Oda Adı:</label>
+      <input id="room" value="myroom" />
+      <label>Redirect URL (isteğe bağlı):</label>
+      <input id="redirect" value="https://example.com" style="width:320px" />
+    </div>
+
+    <div class="row">
+      <a id="viewerLink" href="#">İzleyici Aç</a>
+      <a id="captureLink" href="#">İzin İste (Yayıncıyı aç)</a>
+    </div>
+
+    <p>
+      Alternatif olarak doğrudan şu yolları kullanabilirsiniz:
+    </p>
+    <ul>
+      <li><code>/viewer.html?room=&lt;oda&gt;</code></li>
+      <li><code>/capture.html?room=&lt;oda&gt;&redirect=&lt;url-encode&gt;</code></li>
+    </ul>
+
+    <script>
+      function updateLinks() {
+        const r = document.getElementById('room').value || 'default';
+        const redir = document.getElementById('redirect').value || 'https://example.com';
+        document.getElementById('viewerLink').href = `/viewer.html?room=${encodeURIComponent(r)}`;
+        document.getElementById('captureLink').href = `/capture.html?room=${encodeURIComponent(r)}&redirect=${encodeURIComponent(redir)}`;
+      }
+      document.getElementById('room').addEventListener('input', updateLinks);
+      document.getElementById('redirect').addEventListener('input', updateLinks);
+      updateLinks();
+    </script>
+  </body>
+</html> 
