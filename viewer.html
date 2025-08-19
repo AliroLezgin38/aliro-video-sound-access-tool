@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>İzleyici</title>
+    <style>
+      body { font-family: sans-serif; padding: 16px; }
+      video { width: 640px; max-width: 100%; background: #000; }
+      #room { font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <h2>Canlı Yayın İzleyici</h2>
+    <div>Oda: <span id="room"></span></div>
+    <video id="player" autoplay playsinline controls></video>
+    <div id="status"></div>
+    <script src="/js/viewer.js"></script>
+  </body>
+</html> 
